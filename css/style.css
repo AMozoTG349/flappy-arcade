@@ -1,0 +1,208 @@
+/* Flappy — estilos propios, sin assets externos. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e1a2b;
+  background-image: radial-gradient(circle at 50% 30%, #1d3a5f 0%, #0e1a2b 70%);
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 8px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#stage {
+  position: relative;
+  /* El tamaño en px lo fija JS para mantener el aspecto 360:640. */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+}
+
+#game {
+  display: block;
+  touch-action: none; /* Evita scroll/zoom gestual sobre el canvas. */
+  background: #79c4e8;
+}
+
+/* --- HUD --- */
+#hud {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  pointer-events: none;
+  font-weight: 800;
+}
+
+#hud .pill {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 18px;
+  line-height: 1.4;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+#hud .pill small {
+  font-weight: 600;
+  opacity: 0.8;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+/* --- Overlays --- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  background: rgba(8, 18, 32, 0.55);
+  padding: 24px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.96);
+  color: #14243a;
+  border-radius: 16px;
+  padding: 20px 24px;
+  min-width: min(78%, 260px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.game-title {
+  font-size: 34px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.game-title .accent {
+  color: #ffd23f;
+}
+
+.instruction {
+  font-size: 15px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.instruction kbd {
+  background: #fff;
+  color: #14243a;
+  border-radius: 6px;
+  padding: 1px 7px;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  padding: 4px 2px;
+}
+
+.score-row strong {
+  font-size: 20px;
+}
+
+#medal {
+  margin: 10px 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#medal .coin {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  vertical-align: -4px;
+  margin-right: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.coin.none { background: #cbd5e1; }
+.coin.bronze { background: #cd7f32; }
+.coin.silver { background: #c0c0c0; }
+.coin.gold { background: #ffd23f; }
+.coin.diamond { background: #7df9ff; box-shadow: 0 0 10px #7df9ff; }
+
+#restart-btn {
+  margin-top: 10px;
+  font: inherit;
+  font-weight: 800;
+  font-size: 17px;
+  color: #14243a;
+  background: #ffd23f;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #b8912a;
+  transition: transform 0.06s ease, box-shadow 0.06s ease, background 0.15s;
+}
+
+#restart-btn:hover:not(:disabled) {
+  background: #ffda5e;
+}
+
+#restart-btn:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #b8912a;
+}
+
+#restart-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Móvil pequeño: tipografías algo menores. */
+@media (max-width: 420px) {
+  body { padding: 0; }
+  #stage { border-radius: 0; }
+  .game-title { font-size: 28px; }
+  #hud .pill { font-size: 16px; }
+}
+
+/* Escritorio: marco limitado para no estirar demasiado en alto. */
+@media (min-width: 768px) {
+  #stage { border-radius: 16px; }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Flappy — Vuelo procedural</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" width="360" height="640" aria-label="Juego tipo Flappy Bird"></canvas>
+
+    <div id="hud" aria-live="polite">
+      <span class="pill"><small>PTS</small><span id="hud-score">0</span></span>
+      <span class="pill"><small>RÉCORD</small><span id="hud-best">0</span></span>
+    </div>
+
+    <div id="overlay-ready" class="overlay">
+      <h1 class="game-title">FLAPPY <span class="accent">VUELO</span></h1>
+      <p class="instruction">Toca o pulsa <kbd>ESPACIO</kbd> para volar</p>
+    </div>
+
+    <div id="overlay-gameover" class="overlay hidden">
+      <div class="card">
+        <h2>¡Fin del juego!</h2>
+        <div class="score-row"><span>Puntos</span><strong id="final-score">0</strong></div>
+        <div class="score-row"><span>Récord</span><strong id="final-best">0</strong></div>
+        <p id="medal"><span class="coin none"></span>Sin medalla</p>
+        <button id="restart-btn" type="button" disabled>Jugar de nuevo</button>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="js/game.js"></script>
+</body>
+</html>
